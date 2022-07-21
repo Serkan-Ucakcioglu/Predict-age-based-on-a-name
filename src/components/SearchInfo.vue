@@ -6,10 +6,10 @@ const name = ref("");
 const emit = defineEmits(["submit"]);
 
 const submit = () => {
- if(name.value !== ''){
-   emit("submit", name.value);
-   name.value = ''
- }
+  if (name.value !== "") {
+    emit("submit", name.value);
+    name.value = "";
+  }
 };
 </script>
 
