@@ -1,6 +1,7 @@
 <script lang="ts" setup>
-import { reactive, ref } from "@vue/runtime-core";
+import { reactive } from "@vue/runtime-core";
 import axios from "axios";
+import SearchInfo from "@/components/SearchInfo.vue";
 
 interface info {
   name: string;
@@ -13,10 +14,8 @@ const data: info = reactive({
   count: "",
 });
 
-const name = ref("");
-
-const get = () => {
-  axios.get(`https://api.agify.io/?name=${name.value}`).then((res) => {
+const get = (name: string) => {
+  axios.get(`https://api.agify.io/?name=${name}`).then((res) => {
     data.name = res.data.name;
     data.age = res.data.age;
     data.count = res.data.count;
@@ -27,7 +26,6 @@ const get = () => {
 
 <template>
   <section>
-     
     <div class="container">
       <div class="art_list">
         <ul>
@@ -35,15 +33,16 @@ const get = () => {
           <!-- li -->
           <li>
             <!-- Serach  -->
-            <div class="search">
-              <input type="text" v-model="name" @keydown.enter="get" />
-              <button @click="get">Search</button>
-            </div>
+            <SearchInfo @submit="get" />
 
             <!-- User İnfo  -->
             <div class="user-info">
               <span v-show="data.name">Name : {{ data.name }} </span>
-              <span v-if="data.age == null || data.age == undefined" style="color: red;">You Are Giving Incorrect Information</span>
+              <span
+                v-if="data.age == null || data.age == undefined"
+                style="color: red"
+                >You Are Giving Incorrect Information</span
+              >
               <span v-show="data.age > 0">Age: {{ data.age }}</span>
               <span v-show="data.count">Posta Code: {{ data.count }}</span>
             </div>
@@ -61,7 +60,7 @@ ul {
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  h1{
+  h1 {
     margin-bottom: 10px;
   }
   li {
@@ -69,23 +68,6 @@ ul {
     display: flex;
     flex-direction: column;
 
-    .search {
-      display: flex;
-      margin-top: 10px;
-      input {
-        width: 100%;
-        height: 35px;
-      }
-      button {
-        background-color: #f1f1f1;
-        color: black;
-        border: none;
-        cursor: pointer;
-        border-radius: 4px;
-        margin-left: 5px;
-        padding: 0px 4px;
-      }
-    }
     .user-info {
       display: flex;
       flex-direction: column;
