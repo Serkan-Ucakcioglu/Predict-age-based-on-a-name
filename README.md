@@ -1,24 +1,3 @@
-# cities
+<img width="500" alt="image" src="https://user-images.githubusercontent.com/98692987/180190474-74905ea3-93df-4ee8-84e3-54053f034ca3.png">
 
-## Project setup
-```
-npm install
-```
-
-### Compiles and hot-reloads for development
-```
-npm run serve
-```
-
-### Compiles and minifies for production
-```
-npm run build
-```
-
-### Lints and fixes files
-```
-npm run lint
-```
-
-### Customize configuration
-See [Configuration Reference](https://cli.vuejs.org/config/).
+<img width="500" alt="image" src="https://user-images.githubusercontent.com/98692987/180190578-dfd3b261-e381-4543-a595-3fbc03cb0322.png">
