@@ -6,7 +6,9 @@ const name = ref("");
 const emit = defineEmits(["submit"]);
 
 const submit = () => {
-  emit("submit", name.value);
+ if(name.value !== ''){
+   emit("submit", name.value);
+ }
 };
 </script>
 
